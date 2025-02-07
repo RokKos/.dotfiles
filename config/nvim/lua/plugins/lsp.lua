@@ -68,7 +68,7 @@ return {
 				lua_ls = true,
 
 				ts_ls = {
-					root_dir = require("lspconfig").util.root_pattern("package.json"),
+					root_dir = require("lspconfig").util.root_pattern(".git"),
 					single_file = false,
 					server_capabilities = {
 						documentFormattingProvider = false,
@@ -106,8 +106,17 @@ return {
 
 				clangd = {
 					init_options = { clangdFileStatus = true },
-
-					filetypes = { "c" },
+					cmd = { "clangd", "--background-index" },
+					single_file_support = true,
+					root_dir = lspconfig.util.root_pattern(
+						".clangd",
+						".clang-tidy",
+						".clang-format",
+						"compile_commands.json",
+						"compile_flags.txt",
+						"configure.ac",
+						".git"
+					),
 				},
 
 				zls = true,
@@ -117,7 +126,7 @@ return {
 
 			require("mason").setup()
 			local formatters = { "stylua", "prettierd", "prettier", "goimports", "golangci-lint", "gofumpt" }
-			local debuggers = { "delve" }
+			local debuggers = { "delve", "codelldb" }
 
 			vim.list_extend(formatters, debuggers)
 			vim.list_extend(formatters, vim.tbl_keys(servers))

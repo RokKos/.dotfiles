@@ -37,6 +37,14 @@ return {
 		require("mini.pairs").setup()
 		require("mini.comment").setup()
 		require("mini.cursorword").setup()
+		require("mini.indentscope").setup()
+		require("mini.bracketed").setup()
+
+		local quotes = { "IMEJ LEP DAN", "Ne pozabit pit VODE", "Vzemi si 5 minut in POJDI NAS SPREHOD" }
+		require("mini.starter").setup({
+			header = quotes[math.random(#quotes)],
+		})
+
 		local hipatterns = require("mini.hipatterns")
 		hipatterns.setup({
 			highlighters = {
@@ -116,7 +124,7 @@ return {
 				-- Window navigation with <C-hjkl>, resize with <C-arrow>
 				windows = true,
 				-- Move cursor in Insert, Command, and Terminal mode with <M-hjkl>
-				move_with_alt = false,
+				move_with_alt = true,
 			},
 			autocommands = {
 				-- Basic autocommands (highlight on yank, start Insert in terminal, ...)

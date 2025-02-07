@@ -81,7 +81,7 @@ return {
 					layout_config = {
 						horizontal = {
 							prompt_position = "top",
-							preview_width = 0.65,
+							preview_width = 0.45,
 						},
 						width = 0.95,
 						height = 0.95,

@@ -12,9 +12,56 @@ return {
 		config = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
-			dapui.setup()
+			dapui.setup({
+				layouts = {
+					{
+						elements = {
+							{
+								id = "scopes",
+								size = 0.5,
+							},
+							{
+								id = "breakpoints",
+								size = 0.5,
+							},
+						},
+						position = "bottom",
+						size = 20,
+					},
+				},
+			})
+
 			require("dap-go").setup()
 			require("nvim-dap-virtual-text").setup()
+
+			dap.adapters.lldb = {
+				type = "server",
+				port = "${port}",
+				executable = {
+					command = "codelldb",
+					args = { "--port", "${port}" },
+				},
+			}
+
+			local sep = package.config:sub(1, 1)
+			local function read_target()
+				local cwd = string.format("%s%s", vim.fn.getcwd(), sep)
+				return vim.fn.input("Path to executable: ", cwd, "file")
+			end
+			local cfg = {
+				name = "Debug",
+				type = "lldb",
+				request = "launch",
+				cwd = "${workspaceFolder}",
+				program = read_target,
+				stopOnEntry = false,
+			}
+
+			dap.configurations.c = {
+				cfg,
+				vim.tbl_extend("force", cfg, { name = "Attach debugger", request = "attach" }),
+			}
+			dap.configurations.cpp = vim.tbl_extend("keep", {}, dap.configurations.c)
 
 			local nmap_leader = function(suffix, rhs, desc)
 				vim.keymap.set("n", "<Leader>" .. suffix, rhs, { desc = desc })

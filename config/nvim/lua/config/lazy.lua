@@ -20,7 +20,7 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
-	install = { colorscheme = { "tokyonight" } },
+	install = { colorscheme = { "rose-pine" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
