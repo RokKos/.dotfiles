@@ -9,6 +9,16 @@ return {
 			input = { enabled = true },
 			notifier = { enabled = true },
 			quickfile = { enabled = true },
+			lazygit = { enabled = true },
+		},
+		keys = {
+			{
+				"<leader>gg",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "Lazygit",
+			},
 		},
 	},
 }
