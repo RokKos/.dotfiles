@@ -73,8 +73,8 @@ nmap_leader("cc", "<cmd>source %<CR>", "CONFIG/Reload Whole File")
 nmap_leader("cl", ":.lua<CR>", "CONFIG/Reload Line")
 vmap_leader("cl", ":lua<CR>", "CONFIG/Reload Line")
 
-vim.keymap.set("n", "<M-j>", "<CMD>cnext<CR>", { desc = "Next Quickfix Item" })
-vim.keymap.set("n", "<M-k>", "<CMD>cprev<CR>", { desc = "Prev Quickfix Item" })
+--vim.keymap.set("n", "<M-j>", "<CMD>cnext<CR>", { desc = "Next Quickfix Item" })
+--vim.keymap.set("n", "<M-k>", "<CMD>cprev<CR>", { desc = "Prev Quickfix Item" })
 
 -- AUTO RELOAD FILE
 vim.o.autoread = true

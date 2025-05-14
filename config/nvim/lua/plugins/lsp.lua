@@ -166,6 +166,7 @@ return {
 					python = { "isort", "black" },
 					javascript = { "prettierd", "prettier", stop_after_first = true },
 					typescript = { "prettierd", "prettier", stop_after_first = true },
+					typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 					go = { "gofumpt", "goimports", "golangci-lint" },
 				},
 				-- Set default options
@@ -173,7 +174,7 @@ return {
 					lsp_format = "fallback",
 				},
 				-- Set up format-on-save
-				format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
+				format_on_save = { timeout_ms = 2500, lsp_format = "fallback" },
 			})
 
 			vim.api.nvim_create_autocmd("LspAttach", {

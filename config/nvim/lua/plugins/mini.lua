@@ -3,7 +3,13 @@ return {
 	version = false,
 	config = function()
 		-- mini.nvim setup
-		require("mini.ai").setup()
+		require("mini.ai").setup({
+			custom_textobjects = {
+				-- Disable the built-in function textobject
+				-- Because I use treesitter-text-object for around function
+				f = false,
+			},
+		})
 		require("mini.surround").setup()
 		require("mini.operators").setup()
 
@@ -38,7 +44,13 @@ return {
 		require("mini.comment").setup()
 		require("mini.cursorword").setup()
 		require("mini.indentscope").setup()
-		require("mini.bracketed").setup()
+		require("mini.bracketed").setup({
+			-- Disable mappings for the 'comment' target
+			-- Because we use treesitter-text-object to jump to next class
+			comment = { suffix = "" },
+			file = { suffix = "" },
+		})
+		require("mini.extra").setup()
 
 		local quotes = { "IMEJ LEP DAN", "Ne pozabit pit VODE", "Vzemi si 5 minut in POJDI NAS SPREHOD" }
 		require("mini.starter").setup({

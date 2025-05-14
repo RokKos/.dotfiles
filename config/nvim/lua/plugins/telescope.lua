@@ -111,7 +111,7 @@ return {
 			nmap_leader("sh", builtin.help_tags, "[S]earch [H]elp")
 			nmap_leader("sk", builtin.keymaps, "[S]earch [K]eymaps")
 			nmap_leader("sf", builtin.find_files, "[S]earch [F]iles")
-			nmap_leader("ss", builtin.builtin, "[S]earch [S]elect Telescope")
+			nmap_leader("st", builtin.builtin, "[S]earch [S]elect Telescope")
 			nmap_leader("sw", builtin.grep_string, "[S]earch current [W]ord")
 			nmap_leader("sg", builtin.live_grep, "[S]earch by [G]rep")
 			nmap_leader("sd", builtin.diagnostics, "[S]earch [D]iagnostics")
@@ -119,6 +119,7 @@ return {
 			nmap_leader("s.", builtin.oldfiles, '[S]earch Recent Files ("." for repeat)')
 			nmap_leader("sb", builtin.buffers, "[ ] Find existing buffers")
 			nmap_leader("su", require("telescope").extensions.undo.undo, "[S]earch [U]ndo History")
+			nmap_leader("ss", builtin.lsp_document_symbols, "[S]earch Docuent [S]ymbols")
 
 			-- It's also possible to pass additional configuration options.
 			--  See `:help telescope.builtin.live_grep()` for information about particular keys
